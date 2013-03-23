@@ -1,0 +1,42 @@
+[submodule "vim/bundle/JSComplete"]
+	path = vim/bundle/JSComplete
+	url = https://github.com/teramako/jscomplete-vim.git
+[submodule "vim/bundle/MatchTag"]
+	path = vim/bundle/MatchTag
+	url = https://github.com/gregsexton/MatchTag.git
+[submodule "vim/bundle/NeoComplCache"]
+	path = vim/bundle/NeoComplCache
+	url = https://github.com/Shougo/neocomplcache.git
+[submodule "vim/bundle/NeoSnippet"]
+	path = vim/bundle/NeoSnippet
+	url = https://github.com/Shougo/neosnippet.git
+[submodule "vim/bundle/VDebug"]
+	path = vim/bundle/VDebug
+	url = https://github.com/joonty/vdebug.git
+[submodule "vim/bundle/Tagbar"]
+	path = vim/bundle/Tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/CtrlP"]
+	path = vim/bundle/CtrlP
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/Doxygen"]
+	path = vim/bundle/Doxygen
+	url = https://github.com/vim-scripts/DoxygenToolkit.vim.git
+[submodule "vim/bundle/NeoClang"]
+	path = vim/bundle/NeoClang
+	url = https://github.com/Shougo/neocomplcache-clang.git
+[submodule "vim/bundle/IntelligentTags"]
+	path = vim/bundle/IntelligentTags
+	url = https://github.com/youjumpiwatch/vim-intelligenttags.git
+[submodule "vim/bundle/Decho"]
+	path = vim/bundle/Decho
+	url = https://github.com/vim-scripts/Decho.git
+[submodule "vim/bundle/PHPComplete"]
+	path = vim/bundle/PHPComplete
+	url = https://github.com/youjumpiwatch/vim-phpcomplete.git
+[submodule "vim/bundle/JavaComplete"]
+	path = vim/bundle/JavaComplete
+	url = https://github.com/youjumpiwatch/vim-javacomplete.git
+[submodule "vim/bundle/FiletypeUtils"]
+	path = vim/bundle/FiletypeUtils
+	url = https://github.com/youjumpiwatch/vim-filetypeutils.git

@@ -1,0 +1,263 @@
+! DO NOT ADD ANYTHING BELOW THIS LINE -- DDD WILL OVERWRITE IT
+Ddd*dddinitVersion: 3.3.12
+
+! Debugger settings.
+Ddd*autoDebugger: on
+Ddd*debugger: gdb
+Ddd*useSourcePath: off
+! Ddd*bashSettings: 
+! Ddd*dbgSettings: 
+! Ddd*dbxSettings: 
+Ddd*gdbSettings: \
+set auto-solib-add on\n\
+set backtrace past-main off\n\
+set coerce-float-to-double on\n\
+set confirm off\n\
+set editing on\n\
+set exec-done-display off\n\
+set history expansion off\n\
+set history save off\n\
+set logging overwrite off\n\
+set logging redirect off\n\
+set opaque-type-resolution on\n\
+set overload-resolution on\n\
+set pagination on\n\
+set print address on\n\
+set print array off\n\
+set print asm-demangle on\n\
+set print demangle on\n\
+set print null-stop off\n\
+set print object off\n\
+set print pascal_static-members on\n\
+set print pretty off\n\
+set print sevenbit-strings off\n\
+set print static-members on\n\
+set print symbol-filename off\n\
+set print union on\n\
+set print vtbl off\n\
+set remotebreak off\n\
+set remotecache off\n\
+set step-mode off\n\
+set symbol-reloading off\n\
+set trust-readonly-sections off\n\
+set unwindonsignal off\n\
+set verbose off\n\
+set write off\n\
+set can-use-hw-watchpoints 1\n\
+set debug arch 1\n\
+set debug event 0\n\
+set debug expression 0\n\
+set debug frame 0\n\
+set debug overload 1\n\
+set debug remote 0\n\
+set debug serial 0\n\
+set debug target 0\n\
+set debugvarobj 0\n\
+set stop-on-solib-events 0\n\
+set architecture auto\n\
+set endian auto\n\
+set demangle-style auto\n\
+set language auto\n\
+set disassembly-flavor intel\n\
+set follow-fork-mode parent\n\
+set check range auto\n\
+set check type auto\n\
+dir\n\
+dir $cdir:$cwd\n\
+set annotate 1\n\
+set backtrace limit 0\n\
+set breakpoint pending auto\n\
+set case-sensitive auto\n\
+set charset `ISO-8859-1\'\n\
+set complaints 0\n\
+set cp-abi auto\n\
+set debug-file-directory /usr/local/lib/debug\n\
+set download-write-size 0d512\n\
+set gnutarget auto\n\
+set height 0\n\
+set history filename /usr/home/hudong/repos/projects/c/introduction-to-algorithms/b-tree/.gdb_history\n\
+set history size 0d256\n\
+set host-charset ISO-8859-1\n\
+set input-radix 0d10\n\
+set listsize 0d10\n\
+set logging file ddd.log\n\
+set max-user-call-depth 0d1024\n\
+set os \n\
+set osabi auto\n\
+set output-radix 0d10\n\
+set print elements 0d200\n\
+set print max-symbolic-offset 0\n\
+set print repeats 0d10\n\
+set prompt (gdb) \n\
+set remote hardware-breakpoint-limit 0d4294967295\n\
+set remote hardware-watchpoint-limit 0d4294967295\n\
+set remote memory-read-packet-size 0\n\
+set remote memory-write-packet-size 0\n\
+set remote system-call-allowed not allowed\n\
+set remoteaddresssize 0d32\n\
+set remotebaud 0d4294967295\n\
+set remotelogbase ascii\n\
+set remotetimeout 0d2\n\
+set solib-search-path \n\
+set struct-convention default\n\
+set target-charset ISO-8859-1\n\
+set tui active-border-mode bold-standout\n\
+set tui border-kind acs\n\
+set tui border-mode normal\n\
+set watchdog 0\n\
+set width 0\n
+! Ddd*jdbSettings: 
+! Ddd*perlSettings: 
+! Ddd*pydbSettings: 
+! Ddd*xdbSettings: 
+
+! Source.
+Ddd*findWordsOnly: on
+Ddd*findCaseSensitive: on
+Ddd*tabWidth: 2
+Ddd*indentSource: 2
+Ddd*indentCode: 2
+Ddd*cacheSourceFiles: on
+Ddd*cacheMachineCode: on
+Ddd*displayGlyphs: on
+Ddd*displayLineNumbers: on
+Ddd*disassemble: off
+Ddd*allRegisters: off
+
+! Undo Buffer.
+! Ddd*maxUndoDepth: -1
+! Ddd*maxUndoSize: 2000000
+
+! Misc preferences.
+Ddd*keyboardFocusPolicy: POINTER
+Ddd*statusAtBottom: on
+Ddd*suppressWarnings: on
+Ddd*warnIfLocked: on
+Ddd*checkGrabs: on
+Ddd*saveHistoryOnExit: on
+Ddd*paperSize: 210mm x 297mm
+Ddd*blinkWhileBusy: on
+Ddd*splashScreen: off
+Ddd*startupTips: off
+
+! Keys.
+Ddd*globalTabCompletion: on
+Ddd*cutCopyPasteBindings: KDE
+Ddd*selectAllBindings: KDE
+
+! Data.
+Ddd*pannedGraphEditor: off
+Ddd*graph_edit.showGrid: on
+Ddd*graph_edit.snapToGrid: on
+Ddd*graph_edit.showHints: on
+Ddd*graph_edit.showAnnotations: on
+Ddd*graph_edit.layoutMode: compact
+Ddd*graph_edit.autoLayout: on
+Ddd*showBaseDisplayTitles: on
+Ddd*showDependentDisplayTitles: on
+Ddd*autoCloseDataWindow: on
+! Ddd*graph_edit.GridSize: 16
+Ddd*detectAliases: on
+Ddd*clusterDisplays: off
+Ddd*displayPlacement: XmVERTICAL
+Ddd*align2dArrays: on
+Ddd*arrayOrientation: XmVERTICAL
+Ddd*structOrientation: XmVERTICAL
+Ddd*showMemberNames: on
+
+! Themes.
+Ddd*themes: \
+green.vsl	*\n\
+red.vsl	*\n\
+rednil.vsl	*\n\
+smalltitles.vsl	*\n\
+smallvalues.vsl	*\n\
+suppress.vsl	*\n\
+tinyvalues.vsl	*\n\
+x86.vsl	$eax*;$ebx*;$ecx*;$edx*;($eflags &*\n
+
+! Tips.
+Ddd*buttonTips: on
+Ddd*valueTips: on
+Ddd*buttonDocs: on
+Ddd*valueDocs: on
+
+! Helpers.
+Ddd*editCommand: urxvt -e vim +@LINE@ @FILE@ || urxvt -e vi +@LINE@ @FILE@ || xterm -e vim +@LINE@ @FILE@ || xterm -e vi +@LINE@ @FILE@
+! Ddd*getCoreCommand: gcore -o @FILE@ @PID@
+! Ddd*psCommand: ps x 2> /dev/null || ps -ef 2> /dev/null || ps
+Ddd*termCommand: urxvt -bg \'grey96\' -fg \'black\' -cr \'DarkGreen\' -fn \'@FONT@\' -title \'DDD: Execution Window\' -e /bin/sh -c
+! Ddd*uncompressCommand: gzip -d -c
+! Ddd*wwwCommand: firefox -remote \'openURL(@URL@)\' || mozilla -remote \'openURL(@URL@)\' || opera -remote \'openURL(@URL@)\' || ${WWWBROWSER-false} \'@URL@\' || konqueror \'openURL(@URL@)\' || galeon \'openURL(@URL@)\' || skipstone \'openURL(@URL@)\' || light \'openURL(@URL@)\' || netscape -remote \'openURL(@URL@)\' || mozilla \'@URL@\' || kfmbrowser \'@URL@\' || netscape \'@URL@\' || gnudoit \'(w3-fetch \"@URL@\")\' || mosaic \'@URL@\' || Mosaic \'@URL@\' || xterm -e lynx \'@URL@\'
+! Ddd*plotCommand: gnuplot -bg \'grey96\' -font \'@FONT@\' -name \'@NAME@\' -geometry +5000+5000
+Ddd*plotTermType: xlib
+! Ddd*printCommand: lp -c
+
+! Tool Bars.
+Ddd*toolbarsAtBottom: off
+Ddd*buttonImages: on
+Ddd*buttonCaptions: on
+Ddd*FlatButtons: on
+Ddd*buttonColorKey: g
+Ddd*activeButtonColorKey: c
+
+! Command Tool.
+Ddd*commandToolBar: on
+! Ddd*toolRightOffset: 8
+! Ddd*toolTopOffset: 8
+
+! Buttons.
+Ddd*consoleButtons: 
+Ddd*sourceButtons: 
+Ddd*dataButtons: 
+Ddd*verifyButtons: on
+
+! Display shortcuts.
+Ddd*bashDisplayShortcuts: 
+Ddd*dbgDisplayShortcuts: 
+! Ddd*dbxDisplayShortcuts: 
+! Ddd*gdbDisplayShortcuts: \
+! /t ()	// Convert to Bin\n\
+! /d ()	// Convert to Dec\n\
+! /x ()	// Convert to Hex\n\
+! /o ()	// Convert to Oct
+Ddd*makeDisplayShortcuts: 
+! Ddd*jdbDisplayShortcuts: 
+! Ddd*perlDisplayShortcuts: \
+! sprintf(\"%#x\", ())	// Convert to Hex\n\
+! sprintf(\"%#o\", ())	// Convert to Oct
+! Ddd*pydbDisplayShortcuts: \
+! /t ()	// Convert to Bin\n\
+! /d ()	// Convert to Dec\n\
+! /x ()	// Convert to Hex\n\
+! /o ()	// Convert to Oct
+! Ddd*xdbDisplayShortcuts: 
+
+! Fonts.
+Ddd*defaultFont: Bitstream Vera Sans Mono
+Ddd*variableWidthFont: Bitstream Vera Sans Mono
+Ddd*fixedWidthFont: Bitstream Vera Sans Mono
+Ddd*dataFont: Bitstream Vera Sans Mono
+Ddd*FontSize: 80
+
+! Windows.
+Ddd*openDataWindow: off
+Ddd*openSourceWindow: on
+Ddd*openDebuggerConsole: on
+Ddd*Separate: off
+Ddd*separateExecWindow: off
+Ddd*groupIconify: on
+Ddd*uniconifyWhenReady: on
+
+! Maintenance.
+Ddd*dumpCore: on
+Ddd*debugCoreDumps: off
+
+! Window sizes.
+Ddd*graph_edit.height: 90
+Ddd*source_text_w.columns: 141
+Ddd*source_text_w.rows: 37
+Ddd*code_text_w.columns: 1
+Ddd*code_text_w.rows: 1
+Ddd*gdb_w.columns: 141
+Ddd*gdb_w.rows: 5

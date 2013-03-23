@@ -1,0 +1,2 @@
+fsset ufs kernel 1
+fsset zfs kernel 1

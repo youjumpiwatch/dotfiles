@@ -1,0 +1,13 @@
+-R
+--verbose=no
+--sort=yes
+--fields=+aiKklmnSz
+--extra=+fq
+--exclude=".*"
+--c++-kinds=+lpx
+--c-kinds=+lpx
+--langmap=C:+.h,C++:+.h.thrift
+--regex-PHP=/abstract[ \t]+class[ \t]+([^ ]+)/\1/c,Class/
+--regex-PHP=/const[ \t]+([^ \t=]+)/\1/d,define,constant definitions/
+--regex-PHP=/\$GLOBALS[ \t]*\[[ \t'"]+([^'"=) \t]+)[ \t'"]+\][ \t]*=/\1/d,define,constant definitions/
+--PHP-kinds=+cfd

@@ -1,0 +1,20 @@
+URxvt*background: #000000
+URxvt*foreground: #EEEEEE
+
+URxvt*inheritPixmap: True
+
+URxvt*inputMethod: xim
+URxvt*imLocale: zh_CN.UTF-8
+URxvt*imFont: xft:Droid Sans Fallback:dpi=96:pixelsize=10:antialias=true:hinting=true
+
+URxvt*font:			xft:Bitstream Vera Sans Mono:dpi=96:pixelsize=10:antialias=true:hinting=true,			xft:Droid Sans Fallback:dpi=96:pixelsize=10:antialias=true:hinting=true
+URxvt*boldFont:	xft:Bitstream Vera Sans Mono:bold:dpi=96:pixelsize=10:antialias=true:hinting=true,xft:Droid Sans Fallback:bold:dpi=96:pixelsize=10:antialias=true:hinting=true
+
+URxvt*transparent: true
+URxvt*tintColor: Blue
+URxvt*saveLines: 4096
+URxvt*shading: 60
+
+URxvt*scrollBar: true
+URxvt*scrollBar_right: true
+URxvt*scrollstyle: rxvt
