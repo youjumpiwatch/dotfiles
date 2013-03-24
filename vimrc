@@ -92,7 +92,6 @@ set shiftwidth=2
 set smarttab
 
 " auto-complete
-set omnifunc=syntaxcomplete#Complete
 set completeopt+=menuone,menu,longest
 set completeopt-=preview
 
@@ -198,8 +197,7 @@ let g:neocomplcache_omni_patterns = {}
 let g:neocomplcache_omni_patterns.smarty = '<[^>]*'
 let g:neocomplcache_omni_patterns.xml = '<[^>]*'
 let g:neocomplcache_omni_patterns.php = '\h\w*->\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '->\|\.'
-let g:neocomplcache_omni_patterns.java = '\%(\h\w*\|)\)\.\|('
+" let g:neocomplcache_omni_patterns.java = '\h\w*.'
 let g:neocomplcache_same_filetype_lists = {}
 let g:neocomplcache_skip_auto_completion_time = 3
 au! FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -236,5 +234,5 @@ let g:ctrlp_use_caching = 1
 " IntelligentTags
 let g:Itags_Ctags_Cmd = expand(g:ctags_bin)
 
-" JavaComplete
-au! Filetype java setlocal omnifunc=javacomplete#Complete
+let g:EclimEclipseHome ='/usr/local/lib/eclipse-devel/'
+" au! FileType java setlocal ofu=eclim#java#complete#CodeComplete
