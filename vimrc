@@ -82,7 +82,7 @@ set showmode
 
 " list chars
 set list
-set listchars=tab:\|\ ,extends:>,eol:$
+set listchars=tab:\|\ ,extends:>
 
 " tabwidth
 set tabstop=2
@@ -177,9 +177,6 @@ let g:tagbar_compact = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 24
 
-" JSCSSLint
-let g:d8_command = FindBin(['d8','d8.exe'])
-
 " pathogen
 call pathogen#infect()
 
@@ -197,7 +194,6 @@ let g:neocomplcache_omni_patterns = {}
 let g:neocomplcache_omni_patterns.smarty = '<[^>]*'
 let g:neocomplcache_omni_patterns.xml = '<[^>]*'
 let g:neocomplcache_omni_patterns.php = '\h\w*->\|\h\w*::'
-" let g:neocomplcache_omni_patterns.java = '\h\w*.'
 let g:neocomplcache_same_filetype_lists = {}
 let g:neocomplcache_skip_auto_completion_time = 3
 au! FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -212,12 +208,6 @@ let g:neocomplcache_clang_use_library = 0
 let g:neocomplcache_clang_user_options = ' -I/usr/local/include -I. -fms-extensions -fgnu-runtime '
 
 " NeoSnippet
-"imap <expr><TAB> pumvisible() ? "\<C-n>" :neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"smap <expr><TAB> pumvisible() ? "\<C-n>" :neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"smap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"imap <expr><CR> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)".neocomplcache#smart_close_popup() : pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
-"smap <expr><CR> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)".neocomplcache#smart_close_popup() : pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<S-TAB>"
 imap <expr><CR> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
@@ -234,5 +224,16 @@ let g:ctrlp_use_caching = 1
 " IntelligentTags
 let g:Itags_Ctags_Cmd = expand(g:ctags_bin)
 
-let g:EclimEclipseHome ='/usr/local/lib/eclipse-devel/'
-" au! FileType java setlocal ofu=eclim#java#complete#CodeComplete
+" Eclim
+if has("unix")
+	let s:uname = system("uname")
+	let s:uname = substitute(s:uname, '\n$', '', 'g')
+	if s:uname == "Linux"
+		let g:EclimEclipseHome ='/usr/lib/eclipse'
+	elseif s:uname == "Darwin"
+	elseif s:uname == "FreeBSD"
+		let g:EclimEclipseHome ='/usr/local/lib/eclipse-devel'
+	endif
+elseif has("win32")
+	let g:EclimEclipseHome ='D:/ProgramFiles/Eclipse'
+endif
