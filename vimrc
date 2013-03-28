@@ -237,3 +237,5 @@ if has("unix")
 elseif has("win32")
 	let g:EclimEclipseHome ='D:/ProgramFiles/Eclipse'
 endif
+let g:EclimLogLevel = 0
+let g:EclimSignLevel = 0
