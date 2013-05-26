@@ -37,6 +37,3 @@
 [submodule "vim/bundle/FiletypeUtils"]
 	path = vim/bundle/FiletypeUtils
 	url = https://github.com/youjumpiwatch/vim-filetypeutils.git
-[submodule "vim/bundle/NeoEclim"]
-	path = vim/bundle/NeoEclim
-	url = https://github.com/youjumpiwatch/vim-neoeclim.git
