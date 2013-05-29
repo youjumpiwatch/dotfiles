@@ -19,6 +19,11 @@ set mousemodel=popup
 set pumheight=16
 set synmaxcol=256
 
+set langmenu=en_US
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+language messages en_US.utf-8
+
 " tabline
 if exists("+showtabline")
 	function TabLine()
@@ -59,7 +64,7 @@ if has("gui_running")
 	if has("gui_gtk2")
 		set guifont=Monospace\ 8
 	elseif has("gui_win32")
-		set guifont=Consolas:h11:cANSI
+		set guifont=Consolas:h10:cANSI
 	endif
 	set guioptions+=b
 endif
