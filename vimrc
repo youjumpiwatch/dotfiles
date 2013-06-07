@@ -210,7 +210,7 @@ au! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " NeoClang
 let g:neocomplcache_clang_use_library = 0
 " More user include path.
-let g:neocomplcache_clang_user_options = ' -I/usr/local/include -I. -fms-extensions -fgnu-runtime '
+let g:neocomplcache_clang_user_options = ' -I/usr/local/include -I. -fms-extensions -fgnu-runtime -I'.$GCC_HOME.'\include -I'.$GCC_HOME.'\libs\armeabi-v7a\include -ID:\ProgramFiles\Android-NDK\platforms\android-14\arch-arm\usr\include '
 
 " NeoSnippet
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
