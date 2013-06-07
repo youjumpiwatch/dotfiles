@@ -90,10 +90,10 @@ set list
 set listchars=tab:\|\ ,extends:>
 
 " tabwidth
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-" set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 set smarttab
 
 " auto-complete
@@ -228,19 +228,3 @@ let g:ctrlp_use_caching = 1
 
 " IntelligentTags
 let g:Itags_Ctags_Cmd = expand(g:ctags_bin)
-
-" Eclim
-if has("unix")
-	let s:uname = system("uname")
-	let s:uname = substitute(s:uname, '\n$', '', 'g')
-	if s:uname == "Linux"
-		let g:EclimEclipseHome ='/usr/lib/eclipse'
-	elseif s:uname == "Darwin"
-	elseif s:uname == "FreeBSD"
-		let g:EclimEclipseHome ='/usr/local/lib/eclipse-devel'
-	endif
-elseif has("win32")
-	let g:EclimEclipseHome ='D:/ProgramFiles/Eclipse'
-endif
-let g:EclimLogLevel = 0
-let g:EclimSignLevel = 0
