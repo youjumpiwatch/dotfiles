@@ -22,7 +22,6 @@ set synmaxcol=256
 set langmenu=en_US
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-language messages en_US.utf-8
 
 " tabline
 if exists("+showtabline")
