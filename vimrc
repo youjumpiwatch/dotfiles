@@ -22,6 +22,7 @@ set synmaxcol=256
 set langmenu=en_US
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+set rtp^=$HOME/.vim
 
 " tabline
 if exists("+showtabline")
@@ -63,7 +64,7 @@ if has("gui_running")
 	if has("gui_gtk2")
 		set guifont=Monospace\ 8
 	elseif has("gui_win32")
-		set guifont=Consolas:h10:cANSI
+		set guifont=Microsoft\ YaHei\ Mono:h8
 	endif
 	set guioptions+=b
 endif
