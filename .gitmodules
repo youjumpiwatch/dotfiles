@@ -22,3 +22,9 @@
 [submodule "vim/bundle/FiletypeUtils"]
 	path = vim/bundle/FiletypeUtils
 	url = https://github.com/youjumpiwatch/vim-filetypeutils.git
+[submodule "vim/bundle/NeoComplCache-Clang"]
+	path = vim/bundle/NeoComplCache-Clang
+	url = https://github.com/Shougo/neocomplcache-clang.git
+[submodule "vim/bundle/NeoSnippet-Snippets"]
+	path = vim/bundle/NeoSnippet-Snippets
+	url = https://github.com/Shougo/neosnippet-snippets
