@@ -141,11 +141,9 @@ endfunction FindBin
 " clang completion
 let g:clang_path = "clang++"
 let g:clang_opts = [
-  \ "-x","c++",
-  \ "-D__STDC_LIMIT_MACROS=1","-D__STDC_CONSTANT_MACROS=1",
-  \ "-I/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++",
-  \ "-I/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/x86_64-pc-cygwin",
-  \ "-Iinclude" ]
+  \ "-xc++",
+  \ "-D__STDC_LIMIT_MACROS=1",
+  \ "-D__STDC_CONSTANT_MACROS=1"]
 function! ClangComplete(findstart, base)
    if a:findstart == 1
       " In findstart mode, look for the beginning of the current identifier.
@@ -351,3 +349,5 @@ let g:tagbar_compact = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 24
 
+" LocalVimrc
+let g:localvimrc_ask=0
