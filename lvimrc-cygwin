@@ -1,0 +1,8 @@
+let g:clang_opts += [
+  \ "-I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++",
+  \ "-I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/x86_64-pc-cygwin",
+  \ "-I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/backward",
+  \ "-I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include",
+  \ "-I/usr/local/include",
+  \ "-I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include-fixed",
+  \ "-I/usr/include"]

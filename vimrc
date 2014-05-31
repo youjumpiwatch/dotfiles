@@ -161,7 +161,7 @@ function! ClangComplete(findstart, base)
 
    " Build a clang commandline to do code completion on stdin.
    let l:the_command = shellescape(g:clang_path) .
-                     \ " -cc1 -code-completion-at=-:" . l:l . ":" . l:c
+                     \ " -cc1 -code-completion-at=-:" . l:l . ":" . l:c . " - "
    for l:opt in g:clang_opts
       let l:the_command .= " " . shellescape(l:opt)
    endfor
@@ -303,8 +303,8 @@ let g:neocomplcache_same_filetype_lists = {}
 let g:neocomplcache_skip_auto_completion_time = 3
 let g:neocomplcache_force_omni_patterns = {}
 let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplcache_force_omni_patterns.c = '\.\|->\|::'
+let g:neocomplcache_force_omni_patterns.cpp = '\.\|->\|::'
 au! FileType css setlocal omnifunc=csscomplete#CompleteCSS
 au! FileType html,markdown,smarty setlocal omnifunc=htmlcomplete#CompleteTags
 au! FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
