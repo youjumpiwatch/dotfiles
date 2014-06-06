@@ -26,33 +26,33 @@ set rtp^=$HOME/.vim
 
 " tabline
 if exists("+showtabline")
-    function TabLine()
-        let s = ''
-        let t = tabpagenr()
-        let i = 1
-        while i <= tabpagenr('$')
-            let buflist = tabpagebuflist(i)
-            let winnr = tabpagewinnr(i)
-            let s .= '%' . i . 'T'
-            let s .= (i == t ? '%1*' : '%2*')
-            let s .= ' '
-            let s .= i . ')'
-            let s .= ' %*'
-            let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-            let file = bufname(buflist[winnr - 1])
-            let file = fnamemodify(file, ':p:t')
-            if file == ''
-                let file = '[No Name]'
-            endif
-            let s .= file
-            let i = i + 1
-        endwhile
-        let s .= '%T%#TabLineFill#%='
-        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-        return s
-    endfunction
-    set stal=2
-    set tabline=%!TabLine()
+  function TabLine()
+    let s = ''
+    let t = tabpagenr()
+    let i = 1
+    while i <= tabpagenr('$')
+      let buflist = tabpagebuflist(i)
+      let winnr = tabpagewinnr(i)
+      let s .= '%' . i . 'T'
+      let s .= (i == t ? '%1*' : '%2*')
+      let s .= ' '
+      let s .= i . ')'
+      let s .= ' %*'
+      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+      let file = bufname(buflist[winnr - 1])
+      let file = fnamemodify(file, ':p:t')
+      if file == ''
+        let file = '[No Name]'
+      endif
+      let s .= file
+      let i = i + 1
+    endwhile
+    let s .= '%T%#TabLineFill#%='
+    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+    return s
+  endfunction
+  set stal=2
+  set tabline=%!TabLine()
 endif
 
 " statusline
@@ -61,12 +61,12 @@ set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%d/%m/%Y-%H:%M\")}%=\ ASCI
 
 " gvim
 if has("gui_running")
-    if has("gui_gtk2")
-        set guifont=Monospace\ 8
-    elseif has("gui_win32")
-        set guifont=Microsoft\ YaHei\ Mono:h8
-    endif
-    set guioptions+=b
+  if has("gui_gtk2")
+    set guifont=Monospace\ 8
+  elseif has("gui_win32")
+    set guifont=Microsoft\ YaHei\ Mono:h8
+  endif
+  set guioptions+=b
 endif
 
 " fold
@@ -90,9 +90,9 @@ set list
 set listchars=tab:\|\ ,extends:>
 
 " tabwidth
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
 
@@ -128,134 +128,15 @@ map <F4> :<UP><CR>
 
 " find binary
 function! FindBin(locations)
-    for name in a:locations
-        if executable(name)
-            return name
-        endif
-    endfor
-    if !exists(name)
-        return ''
+  for name in a:locations
+    if executable(name)
+      return name
     endif
+  endfor
+  if !exists(name)
+    return ''
+  endif
 endfunction FindBin
-
-" clang completion
-let g:clang_path = "clang++"
-let g:clang_opts = [
-  \ "-xc++",
-  \ "-D__STDC_LIMIT_MACROS=1",
-  \ "-D__STDC_CONSTANT_MACROS=1"]
-function! ClangComplete(findstart, base)
-   if a:findstart == 1
-      " In findstart mode, look for the beginning of the current identifier.
-      let l:line = getline('.')
-      let l:start = col('.') - 1
-      while l:start > 0 && l:line[l:start - 1] =~ '\i'
-         let l:start -= 1
-      endwhile
-      return l:start
-   endif
-
-   " Get the current line and column numbers.
-   let l:l = line('.')
-   let l:c = col('.')
-
-   " Build a clang commandline to do code completion on stdin.
-   let l:the_command = shellescape(g:clang_path) .
-                     \ " -cc1 -code-completion-at=-:" . l:l . ":" . l:c . " - "
-   for l:opt in g:clang_opts
-      let l:the_command .= " " . shellescape(l:opt)
-   endfor
-
-   " Copy the contents of the current buffer into a string for stdin.
-   " TODO: The extra space at the end is for working around clang's
-   " apparent inability to do code completion at the very end of the
-   " input.
-   " TODO: Is it better to feed clang the entire file instead of truncating
-   " it at the current line?
-   let l:process_input = join(getline(1, l:l), "\n") . " "
-
-   " Run it!
-   let l:input_lines = split(system(l:the_command, l:process_input), "\n")
-   let l:completions_for_neocomplcache = []
-
-   " Parse the output.
-   for l:input_line in l:input_lines
-      " Vim's substring operator is annoyingly inconsistent with python's.
-      if l:input_line[:11] == 'COMPLETION: '
-         let l:value = l:input_line[12:]
-
-        " Chop off anything after " : ", if present, and move it to the menu.
-        let l:menu = ""
-        let l:spacecolonspace = stridx(l:value, " : ")
-        if l:spacecolonspace != -1
-           let l:menu = l:value[l:spacecolonspace+3:]
-           let l:value = l:value[:l:spacecolonspace-1]
-        endif
-
-        " Chop off " (Hidden)", if present, and move it to the menu.
-        let l:hidden = stridx(l:value, " (Hidden)")
-        if l:hidden != -1
-           let l:menu .= " (Hidden)"
-           let l:value = l:value[:l:hidden-1]
-        endif
-
-        " Handle "Pattern". TODO: Make clang less weird.
-        if l:value == "Pattern"
-           let l:value = l:menu
-           let l:pound = stridx(l:value, "#")
-           " Truncate the at the first [#, <#, or {#.
-           if l:pound != -1
-              let l:value = l:value[:l:pound-2]
-           endif
-        endif
-
-         " Filter out results which don't match the base string.
-         if a:base != ""
-            if l:value[:strlen(a:base)-1] != a:base
-               continue
-            end
-         endif
-
-        " TODO: Don't dump the raw input into info, though it's nice for now.
-        " TODO: The kind string?
-        let l:item = {
-          \ "word": l:value,
-          \ "menu": l:menu,
-          \ "info": l:input_line,
-          \ "dup": 1 }
-
-        " Report a result.
-        if complete_add(l:item) == 0
-           return []
-        endif
-        if complete_check()
-           return []
-        endif
-
-      elseif l:input_line[:9] == "OVERLOAD: "
-         " An overload candidate. Use a crazy hack to get vim to
-         " display the results. TODO: Make this better.
-         let l:value = l:input_line[10:]
-         let l:item = {
-           \ "word": " ",
-           \ "menu": l:value,
-           \ "info": l:input_line,
-           \ "dup": 1}
-
-        " Report a result.
-        if complete_add(l:item) == 0
-           return []
-        endif
-        if complete_check()
-           return []
-        endif
-
-      endif
-   endfor
-
-   return []
-endfunction ClangComplete
-
 
 " set tags
 set tags=./tags;/
@@ -273,9 +154,9 @@ highlight CursorColumn cterm=NONE ctermbg=lightred ctermfg=white guibg=lightred 
 
 " autocmd
 augroup csrc
-    au!
-    au BufRead,BufNewFile *Makefile* set filetype=make
-    au BufLeave,FocusLost * silent! wall
+  au!
+  au BufRead,BufNewFile *Makefile* set filetype=make
+  au BufLeave,FocusLost * silent! wall
 augroup END
 
 " pathogen
@@ -310,7 +191,7 @@ au! FileType html,markdown,smarty setlocal omnifunc=htmlcomplete#CompleteTags
 au! FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 au! FileType python setlocal omnifunc=pythoncomplete#Complete
 au! FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-au! FileType c,cpp set omnifunc=ClangComplete
+" au! FileType c,cpp set omnifunc=ClangComplete
 
 " NeoSnippet
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
@@ -319,7 +200,7 @@ imap <expr><CR> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : pumvisi
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><S-TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<S-TAB>"
 if has('conceal')
-    set conceallevel=2 concealcursor=i
+  set conceallevel=2 concealcursor=i
 endif
 
 " CtrlP
@@ -344,6 +225,7 @@ let g:vdebug_options= {
 
 " TagBar
 au! BufEnter * nested :call tagbar#autoopen(0)
+let g:tagbar_ctags_bin = expand(g:ctags_bin)
 let g:tagbar_left = 0
 let g:tagbar_compact = 1
 let g:tagbar_autoshowtag = 1
@@ -351,3 +233,21 @@ let g:tagbar_width = 24
 
 " LocalVimrc
 let g:localvimrc_ask=0
+
+" ClangComplete
+let g:clang_use_library=1
+let g:clang_user_options= " -xc++ -D__STDC_LIMIT_MACROS=1 -D__STDC_CONSTANT_MACROS=1 -I."
+let g:clang_complete_auto=0
+
+if has('win32')
+else
+  let g:clang_user_options .=  ' -I/usr/local/include -I/usr/include '
+  if has('win32unix')
+    let g:clang_user_options .= 
+                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++" .
+                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/x86_64-pc-cygwin" .
+                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/backward" .
+                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include" .
+                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include-fixed"
+  endif
+endif

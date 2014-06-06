@@ -28,3 +28,6 @@
 [submodule "vim/bundle/LocalVimrc"]
 	path = vim/bundle/LocalVimrc
 	url = https://github.com/embear/vim-localvimrc.git
+[submodule "vim/bundle/ClangComplete"]
+	path = vim/bundle/ClangComplete
+	url = https://github.com/itechbear/clang_complete
