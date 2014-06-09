@@ -13,7 +13,6 @@ set noswapfile
 set mouse=a
 set errorformat=%m\ in\ %f\ on\ line\ %l
 set ruler
-set path+=**
 set updatetime=500
 set mousemodel=popup
 set pumheight=16
@@ -249,7 +248,9 @@ else
     for include_path in include_paths
       let include_path = substitute(include_path, '^\s\+\|\s\+$', '', 'g')
       if match(include_path, '^\/usr\/.*') == 0 && match(include_path, ' ') == -1
-        let g:clang_user_options .= " -I" .resolve(include_path)
+        let resolved_path = resolve(include_path)
+        let g:clang_user_options .= " -I" . resolved_path
+        let &path .= ','.resolved_path
       endif
     endfor
   endif
@@ -259,4 +260,9 @@ endif
 let g:syntastic_enable_balloons = 1
 let g:syntastic_always_populate_loc_list = 2
 let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_checkers = ['gcc', 'cpplint']
+let g:syntastic_cpp_checkers = ['cpplint']
+
+" Local Settings
+if filereadable(".vimrc_")
+  so .vimrc_
+endif
