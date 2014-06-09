@@ -250,7 +250,7 @@ else
       if match(include_path, '^\/usr\/.*') == 0 && match(include_path, ' ') == -1
         let resolved_path = resolve(include_path)
         let g:clang_user_options .= " -I" . resolved_path
-        let &path .= ','.resolved_path
+        let &path .= ',' . resolved_path
       endif
     endfor
   endif
@@ -263,6 +263,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_checkers = ['cpplint']
 
 " Local Settings
+let g:clang_include_paths = []
 if filereadable(".vimrc_")
   so .vimrc_
 endif
+for include_path in g:clang_include_paths
+  let resolved_path = resolve(include_path)
+  let g:clang_user_options .= " -I" . resolved_path
+  let &path .= ',' . resolved_path
+endfor
