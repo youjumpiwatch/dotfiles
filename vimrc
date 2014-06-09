@@ -124,7 +124,11 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 
+nnoremap <leader>d "_d
+
 map <F4> :<UP><CR>
+
+inoremap jj <Esc>
 
 " find binary
 function! FindBin(locations)
@@ -238,16 +242,21 @@ let g:localvimrc_ask=0
 let g:clang_use_library=1
 let g:clang_user_options= " -xc++ -D__STDC_LIMIT_MACROS=1 -D__STDC_CONSTANT_MACROS=1 -I."
 let g:clang_complete_auto=0
-
 if has('win32')
 else
-  let g:clang_user_options .=  ' -I/usr/local/include -I/usr/include '
-  if has('win32unix')
-    let g:clang_user_options .= 
-                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++" .
-                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/x86_64-pc-cygwin" .
-                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include/c++/backward" .
-                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include" .
-                \ " -I/usr/lib/gcc/x86_64-pc-cygwin/4.8.2/include-fixed"
+  if (executable('gcc'))
+    let include_paths = split(system('echo | gcc -xc++ -E -v - 2>&1') , '\n')
+    for include_path in include_paths
+      let include_path = substitute(include_path, '^\s\+\|\s\+$', '', 'g')
+      if match(include_path, '^\/usr\/.*') == 0 && match(include_path, ' ') == -1
+        let g:clang_user_options .= " -I" .resolve(include_path)
+      endif
+    endfor
   endif
 endif
+
+" Syntastic
+let g:syntastic_enable_balloons = 1
+let g:syntastic_always_populate_loc_list = 2
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_checkers = ['gcc', 'cpplint']

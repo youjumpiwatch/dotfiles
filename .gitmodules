@@ -31,3 +31,6 @@
 [submodule "vim/bundle/ClangComplete"]
 	path = vim/bundle/ClangComplete
 	url = https://github.com/itechbear/clang_complete
+[submodule "vim/bundle/Syntastic"]
+	path = vim/bundle/Syntastic
+	url = https://github.com/scrooloose/syntastic.git
