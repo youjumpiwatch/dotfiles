@@ -127,7 +127,10 @@ nnoremap <leader>d "_d
 
 map <F4> :<UP><CR>
 
+inoremap hh <Esc>
 inoremap jj <Esc>
+inoremap kk <Esc>
+inoremap ll <Esc>
 
 " find binary
 function! FindBin(locations)
@@ -161,6 +164,31 @@ augroup csrc
   au BufRead,BufNewFile *Makefile* set filetype=make
   au BufLeave,FocusLost * silent! wall
 augroup END
+
+" auto highlight
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
+nnoremap <leader>z :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+
+" toggle paste
+" set pastetoggle=<F10>
+set pastetoggle=<leader>p
 
 " pathogen
 call pathogen#infect()
@@ -259,7 +287,7 @@ endif
 " Syntastic
 let g:syntastic_enable_balloons = 1
 let g:syntastic_always_populate_loc_list = 2
-let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_checkers = ['cpplint']
 
 " Local Settings
