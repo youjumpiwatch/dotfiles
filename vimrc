@@ -267,6 +267,9 @@ let g:localvimrc_ask=0
 
 " ClangComplete
 let g:clang_use_library=1
+if executable('llvm-config')
+  let g:clang_library_path=substitute(system('llvm-config --libdir'),'\n','','g')
+endif
 let g:clang_user_options= " -xc++ -D__STDC_LIMIT_MACROS=1 -D__STDC_CONSTANT_MACROS=1 -I."
 let g:clang_complete_auto=0
 if has('win32')
