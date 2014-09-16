@@ -25,12 +25,9 @@
 [submodule "vim/bundle/NeoSnippet-Snippets"]
 	path = vim/bundle/NeoSnippet-Snippets
 	url = https://github.com/Shougo/neosnippet-snippets
-[submodule "vim/bundle/LocalVimrc"]
-	path = vim/bundle/LocalVimrc
-	url = https://github.com/embear/vim-localvimrc.git
-[submodule "vim/bundle/ClangComplete"]
-	path = vim/bundle/ClangComplete
-	url = https://github.com/itechbear/clang_complete
 [submodule "vim/bundle/Syntastic"]
 	path = vim/bundle/Syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/ClangComplete"]
+	path = vim/bundle/ClangComplete
+	url = https://github.com/Rip-Rip/clang_complete.git
